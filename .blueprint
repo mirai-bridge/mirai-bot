@@ -1,0 +1,19 @@
+created:
+    - database/factories/CustomerFactory.php
+    - database/factories/NetworkFactory.php
+    - database/factories/TickerFactory.php
+    - database/factories/TransactionFactory.php
+    - database/migrations/2024_03_14_140656_create_customers_table.php
+    - database/migrations/2024_03_14_140657_create_networks_table.php
+    - database/migrations/2024_03_14_140658_create_tickers_table.php
+    - database/migrations/2024_03_14_140659_create_transactions_table.php
+    - app/Models/Customer.php
+    - app/Models/Network.php
+    - app/Models/Ticker.php
+    - app/Models/Transaction.php
+models:
+    User: { name: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string:100 nullable' }
+    Customer: { name: string, username: string, telegram_id: string, language: 'string:10', avatar: string, relationships: { hasMany: Transaction } }
+    Network: { name: string, relationships: { hasMany: Ticker } }
+    Ticker: { icon: string, symbol: string, ids: 'string:50', minimum: double, usd_price: double, status: 'enum:Active,Disabled', relationships: { belongsTo: Network } }
+    Transaction: { pairs: string, amount: double, output: double, revenue: double, status: 'enum:Waiting,Processing,Done,Failed', relationships: { belongsTo: Customer } }

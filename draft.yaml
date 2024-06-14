@@ -1,0 +1,36 @@
+models:
+  Customer:
+    name: string
+    username: string
+    telegram_id: string
+    language: string:10
+    avatar: string
+    relationships:
+      hasMany: Transaction
+
+  Network:
+    name: string
+    relationships:
+      hasMany: Ticker
+
+  Ticker:
+    icon: string
+    symbol: string
+    ids: string:50
+    minimum: double
+    usd_price: double
+    status: enum:Active,Disabled
+    relationships:
+      belongsTo: Network
+
+  Transaction:
+    pairs: string
+    amount: double
+    output: double
+    revenue: double
+    status: enum:Waiting,Processing,Done,Failed
+    relationships:
+      belongsTo: Customer
+
+controllers:
+  # ...
