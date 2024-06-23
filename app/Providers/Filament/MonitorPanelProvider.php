@@ -48,7 +48,6 @@ class MonitorPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
-                \App\Http\Middleware\HttpsMiddleware::class
             ])
             ->authMiddleware([
                 Authenticate::class,
